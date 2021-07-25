@@ -6,15 +6,15 @@ from flask import flash, session, render_template, request, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 row1 = []  
 try:
-    conn = MongoClient("mongodb+srv://Sonalica:passw0rd@gettingstarted.5cktn.mongodb.net/Test?retryWrites=true&w=majority")
+    conn = MongoClient("mongodb+srv://username:<password>@gettingstarted.5cktn.mongodb.net/databasename?retryWrites=true&w=majority")
     print("Connected successfully!!!")
 except:  
     print("Could not connect to MongoDB")
 # database
-db = conn.Test
+db = conn.databasename
 
-# Created or Switched to collection names: User
-collection = db.User    
+# Created or Switched to collection names
+collection = db.collectionname    
 
 @app.route('/add', methods=['POST'])
 def add_product_to_cart():
@@ -25,7 +25,7 @@ def add_product_to_cart():
         print("the product code::",_code)
         # validate the received values
         if _quantity and _code and request.method == 'POST':
-            conn = MongoClient("mongodb+srv://Sonalica:passw0rd@gettingstarted.5cktn.mongodb.net/Test?retryWrites=true&w=majority")
+            conn = MongoClient("mongodb+srv://username:<password>@gettingstarted.5cktn.mongodb.net/databasename?retryWrites=true&w=majority")
             print("Connected successfully!!!")
 
             db = conn.Test
